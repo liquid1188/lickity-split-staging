@@ -6,6 +6,24 @@ def quote_fig(t):
           <figcaption><img src="{t["img"]}" alt="" width="96" height="96" loading="lazy"><div class="who">{t["name"]}<span>{t["role"]}</span></div></figcaption>
         </figure>'''
 
+EDJS = r"""<script>(function(){
+var P={event:{h:'New event',lbl:'Upcoming event',btn:'Get tickets',f:[['title','Title','Autumn Concert'],['date','Date and time','Saturday, October 24, 7:30 pm'],['place','Venue','Parish Hall'],['text','Description','An evening of choral music for the season, with a reception to follow.']]},
+book:{h:'New book',lbl:'New release',btn:'Order the book',f:[['title','Title','The Quiet Season'],['date','Publication date','Spring 2027'],['place','Publisher','Riverside Press'],['text','Description','A collection of essays on faith, family, and the small hours of ordinary life.']]},
+post:{h:'New post',lbl:'From the blog',btn:'Read more',f:[['title','Title','Notes from the Road'],['date','Date','November 26, 2026'],['place','Category','Reflections'],['text','Excerpt','A few thoughts from a week of speaking at schools and libraries.']]}};
+var cur='event',fields=document.getElementById('ed-fields');if(!fields)return;
+var card=document.getElementById('ed-card'),draft=document.getElementById('ed-draft'),pub=document.getElementById('ed-pub');
+function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
+function val(k){var e=document.getElementById('ed-'+k);return e?e.value:''}
+function render(){var p=P[cur];card.className='ed-card'+(draft.checked?' is-draft':'');
+card.innerHTML=(draft.checked?'<span class="ed-badge">Draft, only you can see this</span>':'')+'<p class="ed-c-lbl">'+p.lbl+'</p><h3>'+esc(val('title')||'Untitled')+'</h3><p class="ed-c-meta">'+esc(val('date'))+(val('place')?' &middot; '+esc(val('place')):'')+'</p><p class="ed-c-text">'+esc(val('text'))+'</p><span class="ed-c-btn">'+p.btn+'</span>'}
+function load(k){cur=k;var p=P[k];document.getElementById('ed-h').textContent=p.h;
+fields.innerHTML=p.f.map(function(f){var tag=f[0]==='text'?'textarea':'input';return '<div class="ed-f"><label for="ed-'+f[0]+'">'+f[1]+'</label><'+tag+' id="ed-'+f[0]+'"'+(tag==='input'?' type="text" value="'+esc(f[2]).replace(/"/g,'&quot;')+'">':' rows="3">'+esc(f[2])+'</textarea>')+'</div>'}).join('');
+document.querySelectorAll('[data-preset]').forEach(function(b){var on=b.getAttribute('data-preset')===k;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')});pub.textContent='Publish';render()}
+fields.addEventListener('input',render);draft.addEventListener('change',function(){pub.textContent=draft.checked?'Save draft':'Publish';render()});
+document.querySelectorAll('[data-preset]').forEach(function(b){b.addEventListener('click',function(){load(b.getAttribute('data-preset'))})});
+pub.addEventListener('click',function(){var t=pub.textContent;pub.textContent=draft.checked?'Draft saved':'Published';pub.disabled=true;setTimeout(function(){pub.textContent=t;pub.disabled=false},1400)});
+load('event')})();</script>"""
+
 def home():
     T = {t["name"]: t for t in SRC["tests"]}
     three = [T["Christopher Byrne"], T["Roxane B. Salonen"], T["Adán Alejándro Fernández"]]
@@ -65,25 +83,30 @@ def home():
       <div class="prose">
         <h2>Update it yourself, without learning a website builder</h2>
         <p>Custom Websites and Full Builds come with an editor made for your site. It has presets for the things you add most, so a new event, book, concert, album, or post is a short form to fill in, not a blank page to design.</p>
-        <p>The fields match your content. An event asks for a date, a venue, and a ticket link. A book asks for a cover, a description, and where to buy it. The site handles the layout, so every new page looks like it belongs.</p>
+        <p>The fields match your content. An event asks for a date, a venue, and a ticket link. A book asks for a publication date, a description, and where to buy it. The site handles the layout, so every new page looks like it belongs.</p>
         <p>You can save a draft before it goes live, and earlier versions of the site can be restored. If you&rsquo;d rather send me the change, that works too.</p>
       </div>
-      <figure class="ed-demo" aria-label="A simplified view of the site editor">
-        <div class="ed-win" aria-hidden="true">
-          <div class="ed-bar"><span>yoursite.com/admin</span></div>
+      <figure class="ed-demo">
+        <div class="ed-win">
+          <div class="ed-bar"><span>Example editor</span><span class="ed-hint">Try it. Nothing here is saved.</span></div>
           <div class="ed-body">
-            <ul class="ed-side"><li class="on">Events</li><li>Photo albums</li><li>News</li><li>Pages</li><li>Site settings</li></ul>
-            <div class="ed-form">
-              <p class="ed-h">New event</p>
-              <div class="ed-f"><span>Title</span><b>Autumn Concert</b></div>
-              <div class="ed-row"><div class="ed-f"><span>Date</span><b>Oct 24, 7:30 pm</b></div><div class="ed-f"><span>Venue</span><b>Parish Hall</b></div></div>
-              <div class="ed-f"><span>Ticket link</span><b class="ed-link">tickets.example.com</b></div>
-              <div class="ed-f"><span>Cover image</span><b class="ed-drop">Drop an image here</b></div>
-              <div class="ed-foot"><span class="ed-toggle">Draft</span><span class="ed-pub">Publish</span></div>
+            <div class="ed-side" role="group" aria-label="Choose a preset">
+              <button type="button" class="on" data-preset="event" aria-pressed="true">Event</button>
+              <button type="button" data-preset="book" aria-pressed="false">Book</button>
+              <button type="button" data-preset="post" aria-pressed="false">Post</button>
             </div>
+            <form class="ed-form" id="ed-form" onsubmit="return false">
+              <p class="ed-h" id="ed-h">New event</p>
+              <div id="ed-fields"></div>
+              <div class="ed-foot"><label class="ed-toggle"><input type="checkbox" id="ed-draft"> Save as draft</label><button type="button" class="ed-pub" id="ed-pub">Publish</button></div>
+            </form>
           </div>
         </div>
-        <figcaption>A simplified view of the editor. Each site gets its own presets, built around what that client publishes.</figcaption>
+        <div class="ed-prev" aria-live="polite">
+          <p class="ed-prev-lbl">How it appears on your site</p>
+          <article class="ed-card" id="ed-card"></article>
+        </div>
+        <figcaption>An example of the kind of editor I set up. Each site gets presets built around what that client publishes.</figcaption>
       </figure>
     </div>
   </section>
@@ -150,7 +173,7 @@ def home():
 </script>
 '''
     return page("index.html", "Affordable Custom Website Design | Lickity Split Web Design",
-                "Custom websites for authors, musicians, small businesses, and nonprofits. Based in Baltimore, serving clients nationwide. Starter sites from $300.", body, cur="home", ld=ld)
+                "Custom websites for authors, musicians, small businesses, and nonprofits. Based in Baltimore, serving clients nationwide. Starter sites from $300.", body, cur="home", ld=ld, scripts=EDJS)
 
 # ---------- Portfolio ----------
 CASES = [

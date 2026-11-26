@@ -210,7 +210,7 @@ def about():
       <div>
         <h1>I&rsquo;m Andrew, and you&rsquo;ll work directly with me.</h1>
         <p class="lead">Lickity Split is my web design business, based in Baltimore. I work directly with clients on everything from the first conversation to the finished website, including the design, writing, and technical setup.</p>
-        <p class="lead">My background is in business, communications, and publishing. I&rsquo;ve founded a nonprofit, edited books and a journal, and written for national publications. That experience shapes how I approach websites, particularly for people and organizations with a large body of work to present.</p>
+        <p class="lead">My background is in business, communications, and publishing. I&rsquo;ve founded a nonprofit, edited books, and written for national publications. That experience shapes how I approach websites, particularly for people and organizations with a large body of work to present.</p>
         <p class="lead">I care about how a site looks, and just as much about how the information is organized, whether the writing is clear, and how easy it is to keep up to date.</p>
       </div>
       <img src="andrew-about.webp?v=3" alt="Andrew Likoudis" width="880" height="1100" decoding="async">
