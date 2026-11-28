@@ -100,7 +100,7 @@ def pricing():
 {cards}
       </div>
       <div class="prose" style="margin-top:2.5rem">
-        <p>Most projects fit within these ranges. Larger websites or projects requiring more specialized features are quoted individually.</p>
+        <p>Most projects fit within these ranges, and $3,000 is usually the ceiling. If your project looks likely to go beyond that, we can talk through the scope and I&rsquo;ll quote it separately.</p>
         <p>If you&rsquo;re working with a smaller budget, let me know. I can often suggest a simpler way to get started.</p>
       </div>
     </div>
