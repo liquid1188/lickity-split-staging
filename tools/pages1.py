@@ -24,6 +24,10 @@ document.querySelectorAll('[data-preset]').forEach(function(b){b.addEventListene
 pub.addEventListener('click',function(){var t=pub.textContent;pub.textContent=draft.checked?'Draft saved':'Published';pub.disabled=true;setTimeout(function(){pub.textContent=t;pub.disabled=false},1400)});
 load('event')})();</script>"""
 
+REELPLAY = '<button class="reel-play" type="button" hidden aria-label="Play the video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4.8v14.4L20 12z" fill="currentColor"/></svg></button>'
+REELJS = r"""<script>(function(){document.querySelectorAll('.reel .frame').forEach(function(f){var v=f.querySelector('video'),b=f.querySelector('.reel-play');if(!v||!b)return;b.hidden=false;b.addEventListener('click',function(){v.play()});v.addEventListener('play',function(){b.hidden=true})})})();</script>"""
+
+
 def home():
     T = {t["name"]: t for t in SRC["tests"]}
     three = [T["Christopher Byrne"], T["Roxane B. Salonen"], T["Adán Alejándro Fernández"]]
@@ -44,12 +48,23 @@ def home():
           <a class="btn btn-primary" href="work">View My Work</a>
           <a class="btn btn-ghost" href="contact">Get an Estimate</a>
         </div>
-        <p class="hero-note">Projects from $300 &middot; Working with clients nationwide</p>
+        <p class="hero-note">Projects from $500 &middot; Working with clients nationwide</p>
       </div>
       <div class="hero-art" aria-hidden="true">
         <div class="frame frame-a"><img src="screenshots/dcsocial.webp" alt="" width="1280" height="853" fetchpriority="high"></div>
         <div class="frame frame-b"><img src="screenshots/larocca.webp" alt="" width="1280" height="853"></div>
       </div>
+    </div>
+  </section>
+
+  <section class="sec-reel" id="showreel">
+    <div class="wrap">
+      <figure class="reel">
+        <div class="frame reel-wide"><video controls playsinline preload="none" poster="reel/showreel-poster.webp?v=2" width="1920" height="1080" aria-label="Lickity Split Web showreel, under a minute, with music"><source src="reel/showreel.mp4?v=2" type="video/mp4"></video>{REELPLAY}</div>
+        <div class="frame reel-tall"><video controls playsinline preload="none" poster="reel/showreel-vertical-poster.webp?v=2" width="1080" height="1920" aria-label="Lickity Split Web showreel, under a minute, with music"><source src="reel/showreel-vertical.mp4?v=2" type="video/mp4"></video>{REELPLAY}</div>
+        <figcaption class="label">A look at recent client sites.</figcaption>
+      </figure>
+      {REELJS}
     </div>
   </section>
 
@@ -148,13 +163,13 @@ def home():
     <div class="wrap">
       <div class="sec-head">
         <h2>What does a website cost?</h2>
-        <p>A simple starter website costs $300 to $500. Most custom websites cost between $500 and $1,200. Larger projects with archives, event systems, or other features start at $1,200 and are priced by scope.</p>
+        <p>A simple starter website costs $500 to $800. Most custom websites cost between $800 and $1,500. Larger projects with archives, event systems, or other features start at $1,500 and are priced by scope.</p>
         <p>I&rsquo;ll give you an estimate before any work begins.</p>
       </div>
       <div class="cols3">
-        <div class="col"><h3>Starter Site</h3><p class="price-tag">$300&ndash;$500</p><p>A single page or a few simple pages for a professional online presence.</p></div>
-        <div class="col"><h3>Custom Website</h3><p class="price-tag">$500&ndash;$1,200</p><p>A more complete website designed around your work. Most projects fall here.</p></div>
-        <div class="col"><h3>Full Build</h3><p class="price-tag">$1,200&ndash;$2,500+</p><p>Larger websites with archives, catalogs, event systems, or online stores.</p></div>
+        <div class="col"><h3>Starter Site</h3><p class="price-tag">$500&ndash;$800</p><p>A single page or a few simple pages for a professional online presence.</p></div>
+        <div class="col"><h3>Custom Website</h3><p class="price-tag">$800&ndash;$1,500</p><p>A more complete website designed around your work. Most projects fall here.</p></div>
+        <div class="col"><h3>Full Build</h3><p class="price-tag">$1,500&ndash;$3,000</p><p>Larger websites with archives, catalogs, event systems, or online stores.</p></div>
       </div>
       <div class="sec-foot"><a class="btn btn-ghost" href="pricing">View Pricing</a></div>
     </div>
@@ -169,11 +184,11 @@ def home():
 
 {cta("Have a website in mind?", "Tell me what you&rsquo;re working on and what you need the site to do. I&rsquo;ll let you know what I recommend and what it would cost.")}'''
     ld = '''<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://lickitysplitweb.com/#business","name":"Lickity Split Web Design","url":"https://lickitysplitweb.com/","image":"https://lickitysplitweb.com/og.jpg","description":"Custom websites for authors, musicians, small businesses, and nonprofits. Based in Baltimore, serving clients nationwide. Starter sites from $300.","email":"hello@lickitysplitweb.com","priceRange":"$300+","founder":{"@type":"Person","name":"Andrew Likoudis"},"address":{"@type":"PostalAddress","addressLocality":"Baltimore","addressRegion":"MD","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Baltimore"},{"@type":"Country","name":"United States"}],"knowsAbout":["Web design","Website migrations","Website accessibility","Technology consulting","AI consulting"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://lickitysplitweb.com/#business","name":"Lickity Split Web Design","url":"https://lickitysplitweb.com/","image":"https://lickitysplitweb.com/og.jpg","description":"Custom websites for authors, musicians, small businesses, and nonprofits. Based in Baltimore, serving clients nationwide. Starter sites from $500.","email":"hello@lickitysplitweb.com","priceRange":"$500+","founder":{"@type":"Person","name":"Andrew Likoudis"},"address":{"@type":"PostalAddress","addressLocality":"Baltimore","addressRegion":"MD","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Baltimore"},{"@type":"Country","name":"United States"}],"knowsAbout":["Web design","Website migrations","Website accessibility","Technology consulting","AI consulting"]}
 </script>
 '''
     return page("index.html", "Affordable Custom Website Design | Lickity Split Web Design",
-                "Custom websites for authors, musicians, small businesses, and nonprofits. Based in Baltimore, serving clients nationwide. Starter sites from $300.", body, cur="home", ld=ld, scripts=EDJS)
+                "Custom websites for authors, musicians, small businesses, and nonprofits. Based in Baltimore, serving clients nationwide. Starter sites from $500.", body, cur="home", ld=ld, scripts=EDJS)
 
 # ---------- Portfolio ----------
 CASES = [

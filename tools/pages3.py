@@ -95,10 +95,10 @@ def website_design():
              ("Parish &amp; Ministry Websites", ["Schedules, bulletins, programs, publications, and giving."], "parish-ministry-websites"),
              ("Website Migrations", ["Moving an existing site from Wix, Squarespace, or an older blogging platform."], "wix-to-custom-website")]
     kcols = '<div class="cols2">' + "".join(f'<div class="col"><h3>{h}</h3><p>{p[0]}</p><a class="tlink" href="{u}">{h}</a></div>' for h, p, u in kinds) + '</div>'
-    tiers = '<div class="cols3"><div class="col"><h3>Starter Site</h3><p class="price-tag">$300&ndash;$500</p><p>A single page or a few simple pages for a professional online presence.</p></div><div class="col"><h3>Custom Website</h3><p class="price-tag">$500&ndash;$1,200</p><p>A more complete website designed around your work. Most projects fall here.</p></div><div class="col"><h3>Full Build</h3><p class="price-tag">$1,200&ndash;$2,500+</p><p>Larger websites with archives, catalogs, event systems, or online stores.</p></div></div><div class="sec-foot"><a class="btn btn-ghost" href="pricing">View Pricing</a></div>'
+    tiers = '<div class="cols3"><div class="col"><h3>Starter Site</h3><p class="price-tag">$500&ndash;$800</p><p>A single page or a few simple pages for a professional online presence.</p></div><div class="col"><h3>Custom Website</h3><p class="price-tag">$800&ndash;$1,500</p><p>A more complete website designed around your work. Most projects fall here.</p></div><div class="col"><h3>Full Build</h3><p class="price-tag">$1,500&ndash;$3,000</p><p>Larger websites with archives, catalogs, event systems, or online stores.</p></div></div><div class="sec-foot"><a class="btn btn-ghost" href="pricing">View Pricing</a></div>'
     body = f'''{hero("Website design", ["New websites for writers, artists, businesses, and organizations. I can handle a straightforward professional site or something larger with publications, archives, or other features.", "I handle the design, development, and launch myself. I also help with the writing, which can be just as important as getting the technical details right."], '<a class="btn btn-primary" href="work">View My Work</a><a class="btn btn-ghost" href="contact">Get an Estimate</a>')}
 
-{sec('<div class="sec-head"><h2>What does a website cost?</h2><p>A simple starter website costs $300 to $500. Most custom websites cost between $500 and $1,200, while larger projects with archives, event systems, or other features start at $1,200 and are priced by scope.</p></div>' + tiers)}
+{sec('<div class="sec-head"><h2>What does a website cost?</h2><p>A simple starter website costs $500 to $800. Most custom websites cost between $800 and $1,500, while larger projects with archives, event systems, or other features start at $1,500 and are priced by scope.</p></div>' + tiers)}
 
 {sec('<div class="sec-head"><h2>Websites for particular kinds of work</h2></div>' + kcols, stone=True)}
 
@@ -121,10 +121,10 @@ def author():
 
 {sec(examples([("roxane", "Writing and Publishing", "An author website with more than 2,300 migrated blog posts."), ("traddyland", "Author and Book Launch", "A memoir website with press coverage, speaking information, and a migrated forum."), ("lapenna", "Author and Young Readers", "An author website featuring the LaRosa Sisters mystery series and visit inquiries.")]))}
 
-{sec(price_block(["Most author websites cost between $500 and $1,200.", "A simple book-launch site may cost less, while larger archives or additional features may cost more.", "I&rsquo;ll give you an estimate after reviewing what you need."]), stone=True)}
+{sec(price_block(["Most author websites cost between $800 and $1,500.", "A simple book-launch site may cost less, while larger archives or additional features may cost more.", "I&rsquo;ll give you an estimate after reviewing what you need."]), stone=True)}
 
 {cta()}'''
-    return page("author-website-design.html", "Author Website Design from $300 | Lickity Split",
+    return page("author-website-design.html", "Author Website Design from $500 | Lickity Split",
                 "Websites for authors, speakers, and writers, including book pages, press kits, article archives, and newsletter integrations.", body, cur="author")
 
 def music():
@@ -136,7 +136,7 @@ def music():
 
 {sec(examples([("larocca", "Composer and Music Publishing", "A catalog of 59 compositions, with scores, recordings, and press information."), ("adan", "Music and Performance", "A bilingual website with recordings, a concert calendar, and an interactive pipe organ."), ("collin", "Music and Publishing", "A musician&rsquo;s website with recordings, a discography, and press materials.")]), stone=True)}
 
-{sec(price_block(["Most musician websites cost between $500 and $1,200.", "Larger composer catalogs and projects with more involved features start at $1,200 and are priced by scope."]))}
+{sec(price_block(["Most musician websites cost between $800 and $1,500.", "Larger composer catalogs and projects with more involved features start at $1,500 and are priced by scope."]))}
 
 {cta()}'''
     return page("composer-musician-websites.html", "Musician and Composer Website Design | Lickity Split",
@@ -151,7 +151,7 @@ def parish():
 
 {sec(examples([("llf", "Nonprofit and Publishing", "A nonprofit website with programs, publications, events, and giving options."), ("icjf", "Nonprofit and Research", "A redesign with 99 pages and 535 news posts migrated into a searchable website.")]) + '<p class="center-note" style="margin-top:2rem">For an events-oriented organization that is not a parish or ministry, see <a href="work#dcsocial">DC Social Collective</a>.</p>', stone=True)}
 
-{sec(price_block(["Most parish and ministry websites cost between $500 and $1,200.", "Larger organizational websites with extensive archives, event registration, or more complex requirements are quoted according to scope."]))}
+{sec(price_block(["Most parish and ministry websites cost between $800 and $1,500.", "Larger organizational websites with extensive archives, event registration, or more complex requirements are quoted according to scope."]))}
 
 {cta()}'''
     return page("parish-ministry-websites.html", "Catholic Parish and Ministry Website Design | Lickity Split",

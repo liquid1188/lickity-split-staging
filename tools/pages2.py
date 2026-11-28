@@ -19,10 +19,10 @@ CALC_JS = '''<script>
 /* Website cost estimate. Each item has one price and the total is the sum.
    To change a price, edit the number next to the item below. */
 (function(){
-  var FULL_MAX=2500, CUSTOM_MIN=500, FULL_MIN=1200;
+  var FULL_MAX=3000, STARTER_MAX=800, FULL_MIN=1500;
   var ITEMS=[
-    {id:'setup',   name:'Starter site: homepage plus two pages, mobile ready', price:300, fixed:true, note:'Every site starts here'},
-    {id:'pages',   name:'Extra pages', price:25, qty:true, max:30, note:'Books, Events, Press, and so on'},
+    {id:'setup',   name:'Starter site: up to five pages, mobile ready', price:500, fixed:true, note:'Every site starts here'},
+    {id:'pages',   name:'Extra pages', price:100, qty:true, max:3, note:'Up to eight pages on a Starter Site'},
     {id:'editor',  name:'Edit it yourself (content editor)', price:100},
     {id:'seo',     name:'Search engine setup', price:50},
     {id:'gallery', name:'Gallery or portfolio of your work', price:75},
@@ -59,7 +59,7 @@ CALC_JS = '''<script>
       else{var c=list.querySelector('input[data-id="'+it.id+'"]');if(c&&c.checked){total+=it.price;picked.push(it.name+' '+fmt(it.price));}}
     });
     var over=total>FULL_MAX;
-    var kind=over?'Custom estimate required':(total>=FULL_MIN?'Full Build':(total>=CUSTOM_MIN?'Custom Website':'Starter Site'));
+    var kind=over?'Custom estimate required':(total>=FULL_MIN?'Full Build':(total>STARTER_MAX?'Custom Website':'Starter Site'));
     document.getElementById('est-total').textContent=over?'Custom estimate required':fmt(total);
     document.getElementById('est-kind').textContent=over?'':kind;
     document.getElementById('est-over').hidden=!over;
@@ -73,26 +73,26 @@ if(window.matchMedia('(max-width: 760px)').matches){document.querySelectorAll('d
 
 def pricing():
     cards = "\n".join([
-        pcard("Starter Site", "$300&ndash;$500",
+        pcard("Starter Site", "$500&ndash;$800",
               ["A straightforward website for someone who needs a professional online presence without a large investment.",
                "This can be a single-page website or a few simple pages, with your basic information, photographs, contact details, and links.",
                "A good option for book launches, new businesses, independent professionals, and small organizations."],
-              ["Mobile-friendly design", "Basic information and contact details", "Contact form", "Social links", "Basic search engine setup", "Domain configuration"],
+              ["Up to 5 pages for $500, up to 8 pages for $800", "Mobile-friendly design", "Basic information and contact details", "Contact form", "Social links", "Basic search engine setup", "Domain configuration", "Later edits: pay per edit from $25, or the Edits Plan at $19.99/month"],
               "A small starter site can often be completed in about 48 hours once the material is ready.", "Get an Estimate"),
-        pcard("Custom Website", "$500&ndash;$1,200",
+        pcard("Custom Website", "$800&ndash;$1,500",
               ["A more complete website designed around your work, with separate pages for services, books, publications, galleries, or other material.",
                "I can help organize your content, set up forms and integrations, and give you a way to make routine updates.",
                "Most of my projects fall into this category."],
-              ["Custom design", "Multiple pages", "Publications, books, or portfolio listings", "Galleries", "Contact and inquiry forms", "Newsletter and other integrations", "Content editor", "One consolidated revision round", "30 days of post-launch support"],
+              ["Custom design", "Multiple pages", "Publications, books, or portfolio listings", "Galleries", "Contact and inquiry forms", "Newsletter and other integrations", "Content editor", "One consolidated revision round", "30 days of post-launch support", "Later edits: pay per edit from $25, or the Edits Plan at $19.99/month"],
               "Usually around a week, depending on the project.", "Discuss a Website"),
-        pcard("Full Build", "$1,200&ndash;$2,500+",
+        pcard("Full Build", "$1,500&ndash;$3,000",
               ["For larger websites that need a more involved structure or additional features.",
                "This might include a substantial archive, searchable catalog, event system, online store, or content migration.",
                "The price depends on what needs to be built and how much existing material needs to be transferred."],
-              ["Everything relevant from the Custom Website tier", "Large archives", "Searchable catalogs", "E-commerce or donation integrations", "Event registration or ticketing", "More complex content management", "Custom interactive features", "Two consolidated revision rounds", "30 days of post-launch support"],
+              ["Everything relevant from the Custom Website tier", "Large archives", "Searchable catalogs", "E-commerce or donation integrations", "Event registration or ticketing", "More complex content management", "Custom interactive features", "Two consolidated revision rounds", "30 days of post-launch support", "Ongoing Care Plan at $49.99/month"],
               "Determined by scope, often around two weeks for projects in this range.", "Discuss a Larger Project"),
     ])
-    body = f'''{hero("A website doesn&rsquo;t have to cost thousands.", ["Most of the websites I build cost between $500 and $1,200. That includes custom design, the pages you need, and help getting everything online.", "If you only need something simple, I offer starter websites for $300 to $500. Larger projects, particularly those involving archives, online stores, or custom features, start at $1,200 and are priced by scope. Most of them land under $2,500.", "I&rsquo;ll give you a written estimate before any work begins."])}
+    body = f'''{hero("A website doesn&rsquo;t have to cost thousands.", ["Most of the websites I build cost between $800 and $1,500. That includes custom design, the pages you need, and help getting everything online.", "If you only need something simple, I offer starter websites for $500 to $800. Larger projects, particularly those involving archives, online stores, or custom features, start at $1,500 and are priced by scope. Most of them land under $3,000.", "I&rsquo;ll give you a written estimate before any work begins."])}
 
   <section class="sec">
     <div class="wrap">
@@ -135,12 +135,12 @@ def pricing():
       <div class="plan-list">
         <div class="col"><h3>Quick Fix</h3><p class="price-tag">$25</p><p>One small change, such as replacing a photograph, updating a date, or changing a short passage.</p></div>
         <div class="col"><h3>Edit Session</h3><p class="price-tag">$75</p><p>A collection of routine changes handled together, generally requiring up to one hour of work.</p></div>
-        <div class="col"><h3>Larger Revision Session</h3><p class="price-tag">$150</p><p>A larger collection of routine updates or minor layout revisions, generally requiring two to three hours.</p></div>
+        <div class="col"><h3>Larger Revision Session</h3><p class="price-tag">$150</p><p>A larger collection of routine updates or minor layout revisions, generally requiring up to three hours.</p><p>Includes an optional phone call first, so you can give me more context.</p></div>
       </div>
       <h3 style="margin:3rem 0 1.2rem">Monthly plans</h3>
       <div class="plan-list two-up">
-        <div class="col"><h3>Edits Plan</h3><p class="price-tag">$19.99/month</p><p>One batch of routine changes each month, up to about 20 minutes of work.</p><p>Suitable for clients who occasionally need a date, photograph, announcement, or short passage updated.</p></div>
-        <div class="col"><h3>Care Plan</h3><p class="price-tag">$49.99/month</p><p>Up to three batches of routine updates each month, together requiring no more than approximately 45 minutes of work.</p><p>Includes basic uptime monitoring and priority scheduling.</p></div>
+        <div class="col"><h3>Edits Plan</h3><p class="price-tag">$19.99/month</p><p><em>For Starter Sites and Custom Websites</em></p><p>One batch of routine changes each month, up to about 20 minutes of work.</p><p>Suitable for clients who occasionally need a date, photograph, announcement, or short passage updated.</p></div>
+        <div class="col"><h3>Care Plan</h3><p class="price-tag">$49.99/month</p><p><em>For Full Builds</em></p><p>Up to three batches of routine updates each month, together requiring no more than approximately 45 minutes of work.</p><p>Includes basic uptime monitoring and priority scheduling.</p></div>
       </div>
       <p class="center-note" style="margin-top:2rem">New pages, major redesigns, custom features, and extensive content entry are quoted separately.</p>
     </div>
@@ -171,7 +171,7 @@ def pricing():
       </div>
       <div class="calc">
         <div id="est-list"></div>
-        <div class="est-total"><span>Approximate starting price <span class="est-kind" id="est-kind"></span></span><strong id="est-total" aria-live="polite">$300</strong></div>
+        <div class="est-total"><span>Approximate starting price <span class="est-kind" id="est-kind"></span></span><strong id="est-total" aria-live="polite">$500</strong></div>
         <p class="est-over" id="est-over" hidden>This project may need a more detailed estimate. Send me the requirements and I&rsquo;ll review the scope before providing a price.</p>
         <a class="btn btn-primary" id="est-send" href="contact">Send This With My Inquiry</a>
         <p class="small" style="margin-top:1rem">This is a preliminary estimate, not a binding quote. The final price depends on the scope of work.</p>
@@ -180,11 +180,12 @@ def pricing():
   </section>
 
 {cta()}'''
-    return page("pricing.html", "Website Design Pricing from $300 | Lickity Split",
-                "Affordable custom website design. Starter sites from $300, custom websites from $500, and larger projects quoted by scope.", body, cur="pricing", scripts=CALC_JS)
+    return page("pricing.html", "Website Design Pricing from $500 | Lickity Split",
+                "Affordable custom website design. Starter sites from $500, custom websites from $800, and larger projects quoted by scope.", body, cur="pricing", scripts=CALC_JS)
 
 FAQ = [
  ("Who owns the website?", ["You do. Once the project is complete, the website files are yours. I can continue hosting the site, or help you move it elsewhere.", "Some features may depend on third-party services with their own accounts or terms. I&rsquo;ll identify those before we begin."]),
+ ("Will my site appear in your portfolio?", ["Yes, unless you ask me not to. Websites I build may be shown in my portfolio, on social media, and in advertising for Lickity Split Web. That can include screenshots and recordings of the site with the name, logo, photographs, and text that appear on it.", "If you would rather keep yours private, tell me before we start or at any point afterward, and I&rsquo;ll leave it out of anything new."]),
  ("Can I update it myself?", ["Yes. Custom Websites and Full Builds include an editor set up for your site, with presets for the things you add most, such as an event, a book, or a post. You fill in a short form and the site handles the layout.", "You can also change text, replace photographs, and save drafts. I&rsquo;ll show you how to use it before launch."]),
  ("How long does a website take?", ["A small starter site can sometimes be ready in about 48 hours once I have the material. Custom websites usually take about a week, while larger projects take longer.", "I&rsquo;ll give you an expected timeline with the estimate."]),
  ("What does it cost to maintain?", ["Hosting is currently included for the straightforward websites I build.", "You&rsquo;ll still need a domain name, and some projects may involve separate costs for email, e-commerce, newsletters, booking services, or other integrations.", "I&rsquo;ll explain any recurring costs in advance."]),
@@ -332,6 +333,7 @@ def contact():
         <p class="form-msg" id="form-msg" role="alert"></p>
         <div><button class="btn btn-primary" type="submit">Send My Inquiry</button></div>
         <p class="form-note">I usually reply within 24 to 48 hours. You can also <a href="{CALL}" target="_blank" rel="noopener">book a call</a> or write to <a href="mailto:hello@lickitysplitweb.com">hello@lickitysplitweb.com</a>.</p>
+        <p class="form-note">Websites I build may be shown in my portfolio and advertising unless you ask me not to. <a href="about#faq">See the FAQ</a>.</p>
       </form>
       <div class="prose">
         <h2>What should I send?</h2>

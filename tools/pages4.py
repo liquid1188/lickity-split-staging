@@ -147,7 +147,7 @@ def publisher():
 
 {sec(examples([("larocca", "Music publishing", "A composer&rsquo;s catalog of 59 works, with scores available by request through his own imprint."), ("icjf", "Publications and research", "Books, conference proceedings, and 535 news posts in one searchable site."), ("roxane", "Writing archive", "More than 2,300 posts moved into an author&rsquo;s new home.")], "Related work"), stone=True)}
 
-{sec(price_block(["Most publisher and journal websites cost between $500 and $1,200.", "Larger catalogs, back issues to migrate, or a direct store start at $1,200 and are priced by scope.", "I&rsquo;ll give you an estimate after looking at your list."]))}
+{sec(price_block(["Most publisher and journal websites cost between $800 and $1,500.", "Larger catalogs, back issues to migrate, or a direct store start at $1,500 and are priced by scope.", "I&rsquo;ll give you an estimate after looking at your list."]))}
 
 {cta()}'''
     return page("publisher-website-design.html", "Publisher and Journal Website Design | Lickity Split",
@@ -162,7 +162,7 @@ def nonprofit():
 
 {sec(examples([("icjf", "International forum", "A redesign with 99 pages and 535 news posts carried over word for word."), ("dcsocial", "Events and community", "Event pages, volunteer forms, and an archive of more than 6,000 photographs."), ("llf", "Research foundation", "Programs, publications, events, and giving, for a foundation I run myself.")], "Related work") + '<p class="center-note" style="margin-top:2rem">For parishes and ministries, see <a href="parish-ministry-websites">Parish and Ministry Websites</a>.</p>', stone=True)}
 
-{sec(price_block(["Most nonprofit websites cost between $500 and $1,200.", "Larger sites with archives, event systems, or migrations start at $1,200 and are priced by scope.", "If your budget is tight, tell me. I can often suggest a simpler way to start."]))}
+{sec(price_block(["Most nonprofit websites cost between $800 and $1,500.", "Larger sites with archives, event systems, or migrations start at $1,500 and are priced by scope.", "If your budget is tight, tell me. I can often suggest a simpler way to start."]))}
 
 {cta()}'''
     return page("nonprofit-website-design.html", "Nonprofit Website Design | Lickity Split Web Design",
