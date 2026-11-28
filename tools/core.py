@@ -27,7 +27,7 @@ def header(cur):
             <li><a href="composer-musician-websites"{c("music")}>Musician &amp; Composer Websites</a></li>
             <li><a href="publisher-website-design"{c("publisher")}>Publisher &amp; Journal Websites</a></li>
             <li><a href="nonprofit-website-design"{c("nonprofit")}>Nonprofit Websites</a></li>
-            <li><a href="parish-ministry-websites"{c("parish")}>Parish &amp; Ministry Websites</a></li>
+            <li><a href="parish-ministry-websites"{c("parish")}>Ministry &amp; Apostolate Websites</a></li>
             <li><a href="wix-to-custom-website"{c("migrate")}>Website Migrations</a></li>
           </ul>
         </li>
@@ -67,7 +67,7 @@ FOOTER = f'''<footer class="site-foot">
           <li><a href="composer-musician-websites">Musician Websites</a></li>
           <li><a href="publisher-website-design">Publisher Websites</a></li>
           <li><a href="nonprofit-website-design">Nonprofit Websites</a></li>
-          <li><a href="parish-ministry-websites">Parish Websites</a></li>
+          <li><a href="parish-ministry-websites">Ministry Websites</a></li>
           <li><a href="wix-to-custom-website">Website Migrations</a></li>
           <li><a href="technology-consulting">Technology Consulting</a></li>
         </ul>

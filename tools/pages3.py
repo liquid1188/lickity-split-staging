@@ -92,7 +92,7 @@ def vendor():
 def website_design():
     kinds = [("Author Websites", ["Book pages, article archives, press kits, and speaking inquiries."], "author-website-design"),
              ("Musician &amp; Composer Websites", ["Recordings, works catalogs, scores, performances, and booking."], "composer-musician-websites"),
-             ("Parish &amp; Ministry Websites", ["Schedules, bulletins, programs, publications, and giving."], "parish-ministry-websites"),
+             ("Ministry &amp; Apostolate Websites", ["Schedules, bulletins, programs, publications, and giving."], "parish-ministry-websites"),
              ("Website Migrations", ["Moving an existing site from Wix, Squarespace, or an older blogging platform."], "wix-to-custom-website")]
     kcols = '<div class="cols2">' + "".join(f'<div class="col"><h3>{h}</h3><p>{p[0]}</p><a class="tlink" href="{u}">{h}</a></div>' for h, p, u in kinds) + '</div>'
     tiers = '<div class="cols3"><div class="col"><h3>Starter Site</h3><p class="price-tag">$500&ndash;$800</p><p>A single page or a few simple pages for a professional online presence.</p></div><div class="col"><h3>Custom Website</h3><p class="price-tag">$800&ndash;$1,500</p><p>A more complete website designed around your work. Most projects fall here.</p></div><div class="col"><h3>Full Build</h3><p class="price-tag">$1,500&ndash;$3,000</p><p>Larger websites with archives, catalogs, event systems, or online stores.</p></div></div><div class="sec-foot"><a class="btn btn-ghost" href="pricing">View Pricing</a></div>'
@@ -143,7 +143,7 @@ def music():
                 "Custom websites for musicians and composers, with recordings, catalogs, scores, performance dates, and press kits.", body, cur="music")
 
 def parish():
-    body = f'''{hero("Websites for parishes and Catholic organizations", ["A parish website needs to make the essentials easy to find.", "Mass and confession times, bulletins, office information, sacramental preparation, events, and online giving should all be accessible without having to search through several menus.", "I also build websites for apostolates, Catholic nonprofits, and research organizations that need space for publications, programs, events, or fundraising."])}
+    body = f'''{hero("Websites for ministries and apostolates", ["A parish website needs to make the essentials easy to find.", "Mass and confession times, bulletins, office information, sacramental preparation, events, and online giving should all be accessible without having to search through several menus.", "I also build websites for apostolates, Catholic nonprofits, and research organizations that need space for publications, programs, events, or fundraising."])}
 
 {sec('<div class="two">' + prose("What I can include", [], ["Mass, confession, and adoration schedules", "Clergy and staff information", "Ministries and programs", "Bulletins and homily archives", "Giving and registration links", "Publications and newsletters", "Forms and contact information", "An editor for routine updates"])
      + '<div class="stack" style="--s5:2.5rem">' + prose("A website your staff can maintain", ["Parish offices are busy, and the person updating the website may change from one year to the next.", "I provide an editor for routine changes and explain how to use it before the site launches.", "I can also handle updates when the parish would rather have me do them."])
@@ -151,11 +151,11 @@ def parish():
 
 {sec(examples([("llf", "Nonprofit and Publishing", "A nonprofit website with programs, publications, events, and giving options."), ("icjf", "Nonprofit and Research", "A redesign with 99 pages and 535 news posts migrated into a searchable website.")]) + '<p class="center-note" style="margin-top:2rem">For an events-oriented organization that is not a parish or ministry, see <a href="work#dcsocial">DC Social Collective</a>.</p>', stone=True)}
 
-{sec(price_block(["Most parish and ministry websites cost between $800 and $1,500.", "Larger organizational websites with extensive archives, event registration, or more complex requirements are quoted according to scope."]))}
+{sec(price_block(["Most ministry and apostolate websites cost between $800 and $1,500.", "Larger organizational websites with extensive archives, event registration, or more complex requirements are quoted according to scope."]))}
 
 {cta()}'''
-    return page("parish-ministry-websites.html", "Catholic Parish and Ministry Website Design | Lickity Split",
-                "Affordable websites for parishes, ministries, and Catholic nonprofits, with schedules, bulletins, events, publications, and giving.", body, cur="parish")
+    return page("parish-ministry-websites.html", "Catholic Ministry and Apostolate Website Design | Lickity Split",
+                "Affordable websites for ministries, apostolates, parishes, and Catholic nonprofits, with schedules, bulletins, events, publications, and giving.", body, cur="parish")
 
 def migrate():
     proc = [("Pages and photographs", ["I&rsquo;ll review the existing website and bring over the material you want to keep."]),
